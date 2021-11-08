@@ -6,10 +6,10 @@ public class HotelServer{
 	public HotelServer(){
 		try{
 			//The Hotel creates a HotelImpl object
-			Hotel h = new HotelImpl();
+			RoomManager r = new RoomManagerImpl();
 
 			//It binds (registers) to the rmregistry
-			Naming.rebind("rmi://localhost:1099/HotelService", h);
+			Naming.rebind("rmi://localhost:1099/HotelService", r);
 			
 		}
 		catch (Exception e){

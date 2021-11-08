@@ -6,7 +6,7 @@ import java.rmi.Naming;
 public class HotelClient{
 	public static void main(String args []){
 		try{
-			Hotel h = (Hotel)Naming.lookup("rmi://localhost:1099/HotelService");
+			RoomManager r = (RoomManager)Naming.lookup("rmi://localhost:1099/HotelService");
 		}
 		catch(Exception e){
 			System.out.println("Received Exception: ");
