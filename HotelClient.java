@@ -8,12 +8,18 @@ public class HotelClient{
 		try{
 			RoomManager r = (RoomManager)Naming.lookup("rmi://localhost:1099/HotelService");
 
-			if(args.length > 1){
+			if(args.length >= 1){
+				//List the rooms available for booking
 				if(args[0].equals("list")){
-					System.out.println(r.list());
+					String[] myRooms = r.list();
+					for(String myRoom : myRooms){
+						System.out.println(myRoom);
+					}
 				}
+
+				//Book a room
 				else if(args[0].equals("book")){
-					System.out.println(r.book());
+					//System.out.println(r.book());
 				}
 				else if(args[0].equals("guests")){
 					System.out.println(r.guests());
@@ -22,6 +28,13 @@ public class HotelClient{
 					System.out.println(r.revenue());
 				}
 			} else {
+				System.out.println("");
+				System.out.println("Please use anyone of the following commands:");
+				System.out.println("");
+				System.out.println("java HotelClient list <server address>:");
+				System.out.println("java HotelClient book <server address> <room type> <guest name>");
+				System.out.println("java HotelClient guests <server address>:");
+				System.out.println("java HotelClient revenue <server address>:");
 				System.out.println("");
 			}
 		}
