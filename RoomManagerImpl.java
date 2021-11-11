@@ -27,7 +27,44 @@ public class RoomManagerImpl extends java.rmi.server.UnicastRemoteObject impleme
 	}
 	
 	public String book(String room_type, String guest_name) throws RemoteException{
-		RoomManagerImpl.type_0 = RoomManagerImpl.type_0 - 1;
+		if(room_type.equals("type_0")){
+			if(RoomManagerImpl.type_0 > 0)
+				RoomManagerImpl.type_0 = RoomManagerImpl.type_0 - 1;
+			else{
+				return "Room of type_0 is fully booked";
+			}
+		}
+		else if(room_type.equals("type_1")){
+			if(RoomManagerImpl.type_1 > 0)
+				RoomManagerImpl.type_1 = RoomManagerImpl.type_1 - 1;
+			else{
+				return "Room of type_1 is fully booked";
+			}
+		}
+		else if(room_type.equals("type_2")){
+			if(RoomManagerImpl.type_2 > 0)
+				RoomManagerImpl.type_2 = RoomManagerImpl.type_2 - 1;
+			else{
+				return "Room of type_2 is fully booked";
+			}
+		}
+		else if(room_type.equals("type_3")){
+			if(RoomManagerImpl.type_3 > 0)
+				RoomManagerImpl.type_3 = RoomManagerImpl.type_3 - 1;
+			else{
+				return "Room of type_3 is fully booked";
+			}
+		}
+		else if(room_type.equals("type_4")){
+			if(RoomManagerImpl.type_4 > 0)
+				RoomManagerImpl.type_4 = RoomManagerImpl.type_4 - 1;
+			else{
+				return "Room of type_0 is fully booked";
+			}
+		}else{
+			return "You entered the command wrongly";
+		}
+
 		return "You have booked a room";
 	}
 

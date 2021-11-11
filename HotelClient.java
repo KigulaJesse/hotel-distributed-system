@@ -18,8 +18,8 @@ public class HotelClient{
 				}
 
 				//Book a room
-				else if(args[0].equals("book")){
-					//System.out.println(r.book());
+				else if(args[0].equals("book") & 3 == args.length){
+					System.out.println(r.book(args[1], args[2]));
 				}
 				else if(args[0].equals("guests")){
 					System.out.println(r.guests());
