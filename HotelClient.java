@@ -22,7 +22,25 @@ public class HotelClient{
 					System.out.println(r.book(args[1], args[2]));
 				}
 				else if(args[0].equals("guests")){
-					System.out.println(r.guests());
+					String[][] myGuestLists = r.myguests();
+					for(String[] myGuests : myGuestLists){
+						if(myGuests.length == 1){
+							continue;
+						}else{
+							for(int i=0; i < myGuests.length; i++){
+								if(i == 0){
+									System.out.println(" ");
+									System.out.println(myGuests[i]);
+									System.out.println("-------");
+									
+								}else{
+									System.out.println(myGuests[i]);
+								}
+								
+							}
+						}
+
+					}
 				}
 				else if(args[0].equals("revenue")){
 					System.out.println(r.revenue());
