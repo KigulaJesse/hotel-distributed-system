@@ -21,15 +21,13 @@ public class RoomManagerImpl extends java.rmi.server.UnicastRemoteObject impleme
 		super();
 	}
 
-	public String[] list() throws RemoteException{
-		String[] myRooms = new String[7];
-		myRooms[0] = " ";
-		myRooms[1] = String.valueOf(RoomManagerImpl.type_0)+" rooms of type 0 are available for 55,000 UGX per night";
-		myRooms[2] = String.valueOf(RoomManagerImpl.type_1)+" rooms of type 1 are available for 75,000 UGX per night";
-		myRooms[3] = String.valueOf(RoomManagerImpl.type_2)+" rooms of type 2 are available for 80,000 UGX per night";
-		myRooms[4] = String.valueOf(RoomManagerImpl.type_3)+" rooms of type 3 are available for 150,000 UGX per night";
-		myRooms[5] = String.valueOf(RoomManagerImpl.type_4)+" rooms of type 4 are available for 230,000 UGX per night";
-		myRooms[6] = " ";
+	public String list() throws RemoteException{
+		String myRooms = "\r\n";
+		myRooms = myRooms+" "+String.valueOf(RoomManagerImpl.type_0)+" rooms of type 0 are available for 55,000 UGX per night\r\n";
+		myRooms = myRooms+" "+String.valueOf(RoomManagerImpl.type_1)+" rooms of type 1 are available for 75,000 UGX per night\r\n";
+		myRooms = myRooms+" "+ String.valueOf(RoomManagerImpl.type_2)+" rooms of type 2 are available for 80,000 UGX per night\r\n";
+		myRooms = myRooms+" "+ String.valueOf(RoomManagerImpl.type_3)+" rooms of type 3 are available for 150,000 UGX per night\r\n";
+		myRooms = myRooms+" "+ String.valueOf(RoomManagerImpl.type_4)+" rooms of type 4 are available for 230,000 UGX per night\r\n";
 		return myRooms;	
 	}
 	
@@ -103,13 +101,47 @@ public class RoomManagerImpl extends java.rmi.server.UnicastRemoteObject impleme
 				return "Room of type_4 is fully booked";
 			}
 		}else{
-			return "You entered the command wrongly";
+			
+			String error="******BOOK COMMAND ENTERED WRONGLY********\r\n";
+			error = error + "PLease follow format below\r\n";
+			error = error + "********************************************";
+
+			error = error + "\r\n \r\n java HotelClient book <server address> <room type> <guest name> \r\n";
+			
+			return error;
 		}
 	}
 
-	public String[][] myguests() throws RemoteException{
-		String[][] guests = new String[][] {RoomManagerImpl.type_0_list, RoomManagerImpl.type_1_list, RoomManagerImpl.type_2_list, RoomManagerImpl.type_3_list, RoomManagerImpl.type_4_list};
-		return guests;
+	public String myguests() throws RemoteException{
+		String[][] guests = new String[][] 
+		{
+		RoomManagerImpl.type_0_list, 
+		RoomManagerImpl.type_1_list, 
+		RoomManagerImpl.type_2_list, 
+		RoomManagerImpl.type_3_list, 
+		RoomManagerImpl.type_4_list};
+
+		String guests_list = " ";
+		
+		for(String[] myGuests : guests){
+			if(myGuests.length == 1){
+				continue;
+			}else{
+				for(int i=0; i < myGuests.length; i++){
+					if(i == 0){
+						guests_list = guests_list + "\r\n";
+						guests_list = guests_list + myGuests[i] + "\r\n";
+						guests_list = guests_list + "-------\r\n";
+					}else{
+						guests_list = guests_list + myGuests[i] + "\r\n";
+					}
+				}
+			}
+
+		}
+
+
+		return guests_list;
 	}
 
 	public String revenue() throws RemoteException{

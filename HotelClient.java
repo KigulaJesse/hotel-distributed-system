@@ -16,38 +16,17 @@ public class HotelClient{
 
 					//List the rooms available for booking
 					if(args[0].equals("list")){
-						String[] myRooms = r.list();
-						for(String myRoom : myRooms){
-							System.out.println(myRoom);
-						}
+						System.out.println(r.list());
 					}
 
 					//Book a room
-					else if(args[0].equals("book") & 3 == args.length){
-						System.out.println(r.book(args[1], args[2]));
+					else if(args[0].equals("book") & 4 == args.length){
+						System.out.println(r.book(args[2], args[3]));
 					}
 
 					//View the guest list
 					else if(args[0].equals("guests")){
-						String[][] myGuestLists = r.myguests();
-						for(String[] myGuests : myGuestLists){
-							if(myGuests.length == 1){
-								continue;
-							}else{
-								for(int i=0; i < myGuests.length; i++){
-									if(i == 0){
-										System.out.println(" ");
-										System.out.println(myGuests[i]);
-										System.out.println("-------");
-										
-									}else{
-										System.out.println(myGuests[i]);
-									}
-									
-								}
-							}
-
-						}
+						System.out.println(r.myguests());
 					}
 
 					//Get the revenue
@@ -57,12 +36,11 @@ public class HotelClient{
 
 					else{
 						System.out.println("***************COMMAND NOT FOUND*******************************");
-						System.out.println("Please enter a correct server address and follow commands below");
+						System.out.println("Please enter commands as stated below");
 						System.out.println("***************************************************************");
 						
 						printCommands();	
 					}
-
 				} catch (ConnectException c){
 					System.out.println("***************WRONG SERVER ADDRESS STATED*********************");
 					System.out.println("Please enter a correct server address and follow commands below");
@@ -76,8 +54,14 @@ public class HotelClient{
 					
 					printCommands();
 					
+				} catch(NotBoundException c){
+					System.out.println("***************SERVER NOT BOUND*********************");
+					System.out.println("Please start the server");
+					System.out.println("****************************************************");
+					
+					printCommands();
+					
 				}
-
 			} else {
 				System.out.println("");
 				System.out.println("Please use anyone of the following commands:");
