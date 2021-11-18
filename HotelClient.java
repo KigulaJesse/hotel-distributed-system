@@ -11,7 +11,8 @@ public class HotelClient{
 			if(args.length >= 1){
 				
 				try{
-					String s = "rmi://localhost:"+String.valueOf(args[1])+"/HotelService";
+					
+					String s = "rmi://localhost:"+args[1]+"/HotelService";
 					RoomManager r = (RoomManager)Naming.lookup(s);
 
 					//List the rooms available for booking
@@ -61,6 +62,12 @@ public class HotelClient{
 					
 					printCommands();
 					
+				} catch (MalformedURLException m){
+					System.out.println("***************COMMAND NOT FOUND*******************************");
+					System.out.println("Please enter commands as stated below");
+					System.out.println("***************************************************************");
+						
+						printCommands();	
 				}
 			} else {
 				System.out.println("");

@@ -9,9 +9,12 @@ public class HotelServer{
 		try{
 			//The Hotel creates a HotelImpl object
 			RoomManager r = new RoomManagerImpl();
+			RoomManager x = new RoomManagerImpl();
 
 			//It binds (registers) to the rmregistry
 			Naming.rebind("rmi://localhost:5000/HotelService", r);
+			
+			//It binds (registers) to the rmregistry
 			
 		}
 		catch (Exception e){
