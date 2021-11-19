@@ -19,8 +19,8 @@ public class HotelClient{
 						System.out.println(r.list());
 					}
 
-					//Book a room
-					else if(args[0].equals("book") & 4 == args.length){
+					//Book a room on the client side
+					else if(args[0].equals("book")){
 						System.out.println(r.book(args[2], args[3]));
 					}
 
@@ -48,7 +48,7 @@ public class HotelClient{
 					
 					printCommands();
 				} catch (ArrayIndexOutOfBoundsException c){
-					System.out.println("======================SERVER ADDRESS NOT STATED================");
+					System.out.println("==================MISSING OPTIONS IN COMMAND================");
 					System.out.println("Please enter a correct server address and follow commands below");
 					System.out.println("================================================================");
 					
@@ -56,7 +56,7 @@ public class HotelClient{
 					
 				} catch(NotBoundException c){
 					System.out.println("***************SERVER NOT BOUND*********************");
-					System.out.println("Please start the server");
+					System.out.println("When server is not ");
 					System.out.println("****************************************************");
 					
 					printCommands();
