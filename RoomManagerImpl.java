@@ -10,11 +10,11 @@ public class RoomManagerImpl extends java.rmi.server.UnicastRemoteObject impleme
 	public static int type_2 = 5;
 	public static int type_3 = 3;
 	public static int type_4 = 4;
-	public static String[] type_0_list = {"Type 0 Guests"};
-	public static String[] type_1_list = {"Type 1 Guests"};
-	public static String[] type_2_list = {"Type 2 Guests"};
-	public static String[] type_3_list = {"Type 3 Guests"};
-	public static String[] type_4_list = {"Type 4 Guests"};
+	public static String[] type_0_list = {"Type 0 Guests", "55000"};
+	public static String[] type_1_list = {"Type 1 Guests", "75000"};
+	public static String[] type_2_list = {"Type 2 Guests", "80000"};
+	public static String[] type_3_list = {"Type 3 Guests", "150000"};
+	public static String[] type_4_list = {"Type 4 Guests", "230000"};
 
 	public RoomManagerImpl() throws RemoteException{                        
 		super();
@@ -124,7 +124,7 @@ return myRooms;
 		String guests_list = " ";
 		
 		for(String[] myGuests : guests){
-			if(myGuests.length == 1){
+			if(myGuests.length == 2){
 				continue;
 			}else{
 				for(int i=0; i < myGuests.length; i++){
@@ -132,7 +132,10 @@ return myRooms;
 						guests_list = guests_list + "\r\n";
 						guests_list = guests_list + myGuests[i] + "\r\n";
 						guests_list = guests_list + "-------\r\n";
-					}else{
+					} else if(i == 1){
+						continue;
+					}
+					else{
 						guests_list = guests_list + myGuests[i] + "\r\n";
 					}
 				}
@@ -145,6 +148,41 @@ return myRooms;
 	}
 
 	public String revenue() throws RemoteException{
-		return "You are in the revenue method";
+		String[][] guests = new String[][] 
+		{
+		RoomManagerImpl.type_0_list, 
+		RoomManagerImpl.type_1_list, 
+		RoomManagerImpl.type_2_list, 
+		RoomManagerImpl.type_3_list, 
+		RoomManagerImpl.type_4_list};
+
+		String room_total = "";
+		String total_amount = "";
+		int total =  0;
+		
+		for(String[] myGuests : guests){
+			if(myGuests.length == 2){
+				continue;
+			}else{
+				room_total += myGuests[0]+" - "+ (myGuests.length - 2) +" x "+myGuests[1]+"		"+ (myGuests.length - 2) * Integer.valueOf(myGuests[1]) + "\r\n";
+				total += (myGuests.length - 2) * Integer.valueOf(myGuests[1]);
+				/**
+				for(int i=0; i < myGuests.length; i++){
+					if(i == 0){
+						guests_list = guests_list + "\r\n";
+						guests_list = guests_list + myGuests[i] + "\r\n";
+						guests_list = guests_list + "-------\r\n";
+					}else{
+						guests_list = guests_list + myGuests[i] + "\r\n";
+					}
+				} */
+			}
+			
+
+		}
+		total_amount = "------------------------------------------------------"+ "\r\n";
+		total_amount += "Total Revenue				"+total+ "\r\n";
+
+		return room_total+total_amount;
 	}
 }
