@@ -1,4 +1,3 @@
-package hotel;
 import java.rmi.*;
 import java.util.ArrayList;
 import java.util.Arrays;  
@@ -156,7 +155,7 @@ return myRooms;
 		RoomManagerImpl.type_3_list, 
 		RoomManagerImpl.type_4_list};
 
-		String room_total = "";
+		String room_total= "";
 		String total_amount = "";
 		int total =  0;
 		
