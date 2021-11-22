@@ -1,5 +1,3 @@
-package hotel;
-
 import java.rmi.*;
 import java.util.ArrayList;
 import java.util.Arrays;  
@@ -21,15 +19,16 @@ public class RoomManagerImpl extends java.rmi.server.UnicastRemoteObject impleme
 		super();
 	}
 
-	public String list() throws RemoteException{
-		String myRooms = "\r\n";
-		myRooms = myRooms+" "+String.valueOf(RoomManagerImpl.type_0)+" rooms of type 0 are available for 55,000 UGX per night\r\n";
-		myRooms = myRooms+" "+String.valueOf(RoomManagerImpl.type_1)+" rooms of type 1 are available for 75,000 UGX per night\r\n";
-		myRooms = myRooms+" "+ String.valueOf(RoomManagerImpl.type_2)+" rooms of type 2 are available for 80,000 UGX per night\r\n";
-		myRooms = myRooms+" "+ String.valueOf(RoomManagerImpl.type_3)+" rooms of type 3 are available for 150,000 UGX per night\r\n";
-		myRooms = myRooms+" "+ String.valueOf(RoomManagerImpl.type_4)+" rooms of type 4 are available for 230,000 UGX per night\r\n";
-		return myRooms;	
-	}
+//List Function On Server side returns a string of rooms present
+public String list() throws RemoteException{
+String myRooms = "\r\n";
+myRooms = myRooms+" "+String.valueOf(RoomManagerImpl.type_0)+" rooms of type 0 are available for 55,000 UGX per night\r\n";
+myRooms = myRooms+" "+String.valueOf(RoomManagerImpl.type_1)+" rooms of type 1 are available for 75,000 UGX per night\r\n";
+myRooms = myRooms+" "+ String.valueOf(RoomManagerImpl.type_2)+" rooms of type 2 are available for 80,000 UGX per night\r\n";
+myRooms = myRooms+" "+ String.valueOf(RoomManagerImpl.type_3)+" rooms of type 3 are available for 150,000 UGX per night\r\n";
+myRooms = myRooms+" "+ String.valueOf(RoomManagerImpl.type_4)+" rooms of type 4 are available for 230,000 UGX per night\r\n";
+return myRooms;	
+}
 	
 	public String book(String room_type, String guest_name) throws RemoteException{
 		if(room_type.equals("type_0")){
@@ -156,7 +155,7 @@ public class RoomManagerImpl extends java.rmi.server.UnicastRemoteObject impleme
 		RoomManagerImpl.type_3_list, 
 		RoomManagerImpl.type_4_list};
 
-		String room_total = "";
+		String room_total= "";
 		String total_amount = "";
 		int total =  0;
 		

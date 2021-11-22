@@ -1,8 +1,7 @@
-package hotel;
-
 import java.rmi.Naming;
 import java.rmi.registry.Registry;
 import java.rmi.registry.LocateRegistry;
+
 
 public class HotelServer{
 	public HotelServer(){
