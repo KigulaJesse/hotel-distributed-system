@@ -12,6 +12,7 @@ public class HotelClient{
 					
 					String s = "rmi://localhost:"+args[1]+"/HotelService";
 					RoomManager r = (RoomManager)Naming.lookup(s);
+					
 
 					//List the rooms available for booking
 					if(args[0].equals("list")){
